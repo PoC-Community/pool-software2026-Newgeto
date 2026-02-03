@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Todo Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    li { cursor: pointer; }
+    .done { text-decoration: line-through; }
+  </style>
+</head>
+<body>
+
+  <h1>Todo List</h1>
+
+  <form id="form">
+    <input id="input" />
+    <button>Ajouter</button>
+  </form>
+
+  <p id="msg"></p>
+  <ul id="list"></ul>
+
+  <script>
+    const form = document.querySelector("#form");
+    const input = document.querySelector("#input");
+    const list = document.querySelector("#list");
+    const msg = document.querySelector("#msg");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (input.value === "") return;
+
+      const li = document.createElement("li");
+      li.textContent = input.value;
+      list.appendChild(li);
+
+      input.value = "";
+      msg.textContent = "Item ajouté";
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") msg.textContent = "";
+    });
+
+    list.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        e.target.classList.toggle("done");
+      }
+    });
+
+    list.addEventListener("dblclick", (e) => {
+      if (e.target.tagName === "LI") {
+        e.target.remove();
+      }
+    });
+  </script>
+
+</body>
+</html>

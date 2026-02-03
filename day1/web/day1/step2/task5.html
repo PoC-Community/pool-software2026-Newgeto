@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Interactive DOM</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .box { padding: 10px; border: 2px solid black; margin: 10px 0; }
+    li { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Interactive Page</h1>
+
+  <div id="box" class="box">Message ici</div>
+
+  <input id="input" placeholder="Nouvel item">
+  <button id="addBtn">Ajouter</button>
+  <button id="colorBtn">Changer couleur</button>
+
+  <ul id="list"></ul>
+
+  <script>
+    const title = document.querySelector("#title");
+    const box = document.querySelector("#box");
+    const input = document.querySelector("#input");
+    const addBtn = document.querySelector("#addBtn");
+    const colorBtn = document.querySelector("#colorBtn");
+    const list = document.querySelector("#list");
+
+    addBtn.addEventListener("click", () => {
+      const li = document.createElement("li");
+      li.textContent = input.value;
+      list.appendChild(li);
+      input.value = "";
+      box.textContent = "Item ajouté !";
+    });
+
+    colorBtn.addEventListener("click", () => {
+      box.style.backgroundColor = "lightblue";
+      title.textContent = "Couleur changée";
+    });
+  </script>
+
+</body>
+</html>
