@@ -4,26 +4,26 @@ const morgan = require('morgan');
 const app = express();
 const PORT = 3000;
 
-/* ========== MIDDLEWARES ========== */
-app.use(express.json());   
-app.use(morgan('dev'));    
+// middlewares
+app.use(express.json());
+app.use(morgan('dev'));
 
-/* ========== FAUSSE BASE DE DONNÉES ========== */
+// fausse base de données
 const tasks = [];
 
-/* ========== ROUTES ========== */
+// routes
 
-// Test
+// test
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// Voir toutes les tâches
+// voir toutes les tâches
 app.get('/api/tasks', (req, res) => {
   res.json(tasks);
 });
 
-// Ajouter une tâche
+// ajouter une tâche
 app.post('/api/tasks', (req, res) => {
   const newTask = {
     id: tasks.length + 1,
@@ -35,7 +35,7 @@ app.post('/api/tasks', (req, res) => {
   res.status(201).json(newTask);
 });
 
-// Supprimer une tâche
+// supprimer une tâche
 app.delete('/api/tasks/:id', (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -49,7 +49,7 @@ app.delete('/api/tasks/:id', (req, res) => {
   res.json(deletedTask[0]);
 });
 
-/* ========== LANCEMENT SERVEUR ========== */
+// lancement serveur
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
