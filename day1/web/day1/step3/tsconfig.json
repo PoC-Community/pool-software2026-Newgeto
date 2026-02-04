@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "none",
+    "rootDir": "src",
+    "outDir": ".",
+    "strict": false
+  },
+  "files": ["src/main.ts"]
+}
